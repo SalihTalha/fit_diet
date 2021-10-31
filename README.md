@@ -2,22 +2,22 @@
 This is our school project that written with Flutter. 
 
 ## Team:
-*Burak Arslan
-*Cem Gümüş
-*Rahim Gökçeli
-*Salih Talha Akgün
-*Mehmet Said Çankaya
-*Mustafa Pişirici
+* Burak Arslan
+* Cem Gümüş
+* Rahim Gökçeli
+* Salih Talha Akgün
+* Mehmet Said Çankaya
+* Mustafa Pişirici
 
 ## Expected Main Page:
 ![image](https://user-images.githubusercontent.com/47334156/139575315-3715f817-9582-449c-8880-cd34abb48dbb.png)
 
 ## Technologies:
-*Dart
-*Flutter
-*Firebase Cloud Storage
-*Firebase Realtime Database
-*Firebase Authentication
+* Dart
+* Flutter
+* Firebase Cloud Storage
+* Firebase Realtime Database
+* Firebase Authentication
 
 ## Capabilities:
 
