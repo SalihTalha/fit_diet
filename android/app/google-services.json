@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "144204206366",
+    "firebase_url": "https://diyetappdemo.firebaseio.com",
+    "project_id": "diyetappdemo",
+    "storage_bucket": "diyetappdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144204206366:android:d877c21429f157ee94390f",
+        "android_client_info": {
+          "package_name": "com.rapidsoft.diyet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "144204206366-63d5p2o122kfe9fqtajeoa052o4vati7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLjLz_b3CojZVQZqhkNUdn1H_Bl0zVnGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144204206366-63d5p2o122kfe9fqtajeoa052o4vati7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
