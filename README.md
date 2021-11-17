@@ -1,13 +1,16 @@
 # fit_diet
 This is our school project that written with Flutter. 
 
+![image](https://user-images.githubusercontent.com/47334156/142261773-cee6a633-3287-4527-b938-3cc43d30bd4e.png)
+
+
 ## Team:
-* Burak Arslan
-* Cem Gümüş
-* Rahim Gökçeli
-* Salih Talha Akgün
-* Mehmet Said Çankaya
-* Mustafa Pişirici
+* Burak Arslan (Scrum Master)
+* Cem Gümüş (Bussiness Analyst)
+* Rahim Gökçeli (Mobile Developer)
+* Salih Talha Akgün (Project Owner)
+* Mehmet Said Çankaya (Mobile Developer)
+* Mustafa Pişirici (Mobile Developer)
 
 ## Expected Main Page:
 ![image](https://user-images.githubusercontent.com/47334156/139575315-3715f817-9582-449c-8880-cd34abb48dbb.png)
@@ -27,7 +30,7 @@ This is our school project that written with Flutter.
     Check diet plan
     Check daily goals
     Check forbidden and free meals
-   
+
   ### For dietician:
     Control and change the information given below
     Add and delete users, control user information
