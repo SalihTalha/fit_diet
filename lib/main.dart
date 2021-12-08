@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/services/Authenticate.dart';
 import 'package:diyet/views/chatCodePage.dart';
-import 'file:///C:/Users/sns/AndroidStudioProjects/diyet/lib/services/signin.dart';
+import '../services/signin.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -1,6 +1,6 @@
 import 'package:diyet/services/auth.dart';
 import 'package:diyet/views/chatCodePage.dart';
-import 'file:///C:/Users/sns/AndroidStudioProjects/diyet/lib/services/signin.dart';
+import './signin.dart';
 import 'package:diyet/views/tabPage.dart';
 import 'package:flutter/material.dart';
 import 'package:diyet/widgets/widget.dart';

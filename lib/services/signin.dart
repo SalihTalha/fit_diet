@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diyet/services/auth.dart';
 import 'package:diyet/views/chatCodePage.dart';
-import 'file:///C:/Users/sns/AndroidStudioProjects/diyet/lib/services/signup.dart';
+import './signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:diyet/widgets/widget.dart';
