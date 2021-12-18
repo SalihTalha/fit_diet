@@ -26,6 +26,12 @@ class DatabaseMethods {
         .snapshots();
   }
 
+  getUserList() async {
+    QuerySnapshot querySnapshot = await Firestore.instance.collection("users").getDocuments();
+    var data = querySnapshot.docs.map((doc) => doc.data()).toList();
+    return data;
+  }
+
 /*
   *     YEMEK LİSTESİ ALMA
   *
