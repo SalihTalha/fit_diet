@@ -1,6 +1,8 @@
+import 'package:diyet/views/Customers.dart';
 import 'package:diyet/views/chatCodePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:diyet/views/AdminPages/mainPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,6 @@ class _HomeSState extends State<HomeS> {
 
   @override
   Widget build(BuildContext context) {
-    return ChatCodePage();
+    return Customers();
   }
 }
