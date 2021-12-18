@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:diyet/views/tabPage.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 showAlertDialog(BuildContext context){
   AlertDialog alert=AlertDialog(
@@ -119,7 +117,7 @@ class _ChatCodePageState extends State<ChatCodePage> {
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: <Color>[
-                          Colors.green,
+                          Colors.lightBlue,
                           Colors.blue
                         ],
                       ),
