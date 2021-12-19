@@ -1,6 +1,6 @@
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
-import 'package:diyet/views/UpdateCustomer.dart';
+import 'package:diyet/views/AdminPages/UpdateCustomer.dart';
 import 'package:flutter/material.dart';
 
 class Customers extends StatefulWidget {

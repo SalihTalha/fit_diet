@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:diyet/helper/databaseMethods.dart';
-import 'package:diyet/views/DietPlanning.dart';
+import 'package:diyet/views/AdminPages/DietPlanning.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
-import '../helper/Helper.dart';
+import '../../helper/Helper.dart';
 
 class UpdateCustomer extends StatefulWidget {
   final user;

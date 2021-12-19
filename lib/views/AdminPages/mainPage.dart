@@ -1,5 +1,8 @@
 import 'package:diyet/main.dart';
+import 'package:diyet/views/AdminPages/CreateCustomer.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
+import 'package:diyet/views/AdminPages/Customers.dart';
+import 'package:diyet/views/AdminPages/UpdateCustomer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,16 +18,16 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     var values = [
       {
-        'text': 'Diyet İşlemleri',
+        'text': 'Kullanıcı İşlemleri',
         'onTap': HomeS()
       },
       {
-        'text': 'Mesajlaşma',
-        'onTap': chatAdminPage("12345") // konuşmak için kullanıcı seç, sonra buraya yönlendir
+        'text': 'Kullanıcılar',
+        'onTap': Customers()
       },
       {
         'text': 'Kullanıcı Ekle',
-        'onTap': HomeS()
+        'onTap': CreateCustomer()
       },
       {
         'text': 'Profil',

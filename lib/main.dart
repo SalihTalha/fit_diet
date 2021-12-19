@@ -1,4 +1,4 @@
-import 'package:diyet/views/Customers.dart';
+import 'package:diyet/views/AdminPages/Customers.dart';
 import 'package:diyet/views/chatCodePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -36,6 +36,6 @@ class _HomeSState extends State<HomeS> {
 
   @override
   Widget build(BuildContext context) {
-    return Customers();
+    return MainPage();
   }
 }
