@@ -109,6 +109,11 @@ class DatabaseMethods {
     return data;
   }
 
+  getDietsList() async {
+    QuerySnapshot querySnapshot = await Firestore.instance.collection("mealLists").getDocuments();
+    var data = querySnapshot.docs.map((doc) => doc.data()).toList();
+    return data;
+  }
 /*
   *     YEMEK LİSTESİ ALMA
   *

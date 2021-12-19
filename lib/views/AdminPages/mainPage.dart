@@ -1,5 +1,6 @@
 import 'package:diyet/main.dart';
 import 'package:diyet/views/AdminPages/CreateCustomer.dart';
+import 'package:diyet/views/AdminPages/DietsPage.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
 import 'package:diyet/views/AdminPages/Customers.dart';
 import 'package:diyet/views/AdminPages/UpdateCustomer.dart';
@@ -18,8 +19,8 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     var values = [
       {
-        'text': 'Kullanıcı İşlemleri',
-        'onTap': HomeS()
+        'text': 'Diyetler',
+        'onTap': Diets(toChoose: false,)
       },
       {
         'text': 'Kullanıcılar',
@@ -34,33 +35,41 @@ class _MainPageState extends State<MainPage> {
         'onTap': HomeS()
       }
     ];
+
+    var topView = [
+      Text("Hoşgeldiniz, Salih Talha"),
+      Text("Hoşgeldiniz, Salih Talha"),
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: GridView.count(
           crossAxisCount: 2,
-          children: List.generate(4, (index) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => values[index]['onTap']),
-                    );
+          children: new List.from(topView)..addAll(
+              List.generate(4, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => values[index]['onTap']),
+                        );
 
-                  },
-                  child: Container(
-                    color: Colors.lightBlue,
-                    child: Center(
-                      child: Text(
-                        values[index]['text'],
-                        style: Theme.of(context).textTheme.headline5,
+                      },
+                      child: Container(
+                        color: Colors.lightBlue,
+                        child: Center(
+                          child: Text(
+                            values[index]['text'],
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              );
-            }),
+                  );
+                }),
+          )
         ),
       ),
     );

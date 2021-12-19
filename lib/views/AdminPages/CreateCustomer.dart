@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/DietPlanning.dart';
+import 'package:diyet/views/AdminPages/DietsPage.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'package:diyet/helper/Helper.dart';
 
 class CreateCustomer extends StatefulWidget {
   final user;
-
   const CreateCustomer({this.user}) : super();
 
   @override
@@ -25,6 +25,7 @@ class _CreateCustomer extends State<CreateCustomer> {
   bool _isHide = true;
   final _formKey = GlobalKey<FormState>();
   var imageUrl = null;
+  var selectedDietPlan = "Seçilmedi";
 
   @override
   void initState() {
@@ -59,6 +60,7 @@ class _CreateCustomer extends State<CreateCustomer> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -249,14 +251,20 @@ class _CreateCustomer extends State<CreateCustomer> {
                         height: 50,
                         margin: EdgeInsets.only(top: 20.0),
                         child: ElevatedButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return DietPlanning();
-                              },
-                            ),
-                          ),
+                          onPressed: () async {
+                            var tempSelected = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Diets(toChoose: true,);
+                                },
+                              ),
+                            );
+                            if(tempSelected != null){
+                              selectedDietPlan = tempSelected;
+                            }
+                            print(selectedDietPlan);
+                            },
                           child: Text('DİYET PLANLAMA'),
                         )),
                     Container(

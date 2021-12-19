@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/DietPlanning.dart';
+import 'package:diyet/views/AdminPages/DietsPage.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
 import '../../helper/Helper.dart';
@@ -259,7 +260,7 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return DietPlanning();
+                                return Diets(toChoose: true,);
                               },
                             ),
                           ),
