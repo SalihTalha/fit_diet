@@ -96,7 +96,15 @@ class DatabaseMethods {
   }
 
   getUserList() async {
-    QuerySnapshot querySnapshot = await Firestore.instance.collection("users").getDocuments();
+    QuerySnapshot querySnapshot =
+        await Firestore.instance.collection("users").getDocuments();
+    var data = querySnapshot.docs.map((doc) => doc.data()).toList();
+    return data;
+  }
+
+  getMealList() async {
+    QuerySnapshot querySnapshot =
+        await Firestore.instance.collection("meals").getDocuments();
     var data = querySnapshot.docs.map((doc) => doc.data()).toList();
     return data;
   }

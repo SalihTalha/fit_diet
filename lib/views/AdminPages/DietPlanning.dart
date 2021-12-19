@@ -1,5 +1,5 @@
 import 'package:diyet/views/AdminMainPage.dart';
-import 'package:diyet/views/DietPlanningOperations.dart';
+import 'package:diyet/views/AdminPages/DietPlanningOperations.dart';
 import 'package:flutter/material.dart';
 
 class DietPlanning extends StatefulWidget {
