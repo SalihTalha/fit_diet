@@ -1,4 +1,5 @@
 import 'package:diyet/helper/databaseMethods.dart';
+import 'package:diyet/views/AdminPages/DietPlanning.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
 import 'package:diyet/views/AdminPages/UpdateCustomer.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,59 @@ class _DietsState extends State<Diets> {
 
   @override
   Widget build(BuildContext context) {
-    print(_diets);
+    var addView = [Card(
+      child: Container(
+        height: 150,
+        color: Colors.white,
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                child: Text("Yeni Diyet Oluştur"),
+              ),
+              flex: 8,
+            ),
+            Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      color: Colors.grey[700],
+                      icon: Icon(Icons.add_outlined),
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DietPlanning(diet: 'new');
+                            },
+                          ),
+                        );
+                      },
+                    ),
+
+                    IconButton(
+                      color: Colors.grey[700],
+                      icon: Icon(Icons.settings),
+                      onPressed: (){Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DietPlanning(diet: {});
+                          },
+                        ),
+                      );
+                      },
+                    ),
+                  ],
+                )
+            )
+          ],
+        ),
+      ),
+    ),];
+
     return Scaffold(
         body: SingleChildScrollView(
             child: Container(
@@ -37,7 +90,8 @@ class _DietsState extends State<Diets> {
                 top: 50,
               ),
               child: Column(
-                children: new List.generate(
+                children: new List.from(addView)..addAll(
+                  List.generate(
                     _diets.length,
                         (index) => Card(
                       child: Container(
@@ -79,8 +133,8 @@ class _DietsState extends State<Diets> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {
-                                            return Text("Diyet düzenle");
-                                            },
+                                            return DietPlanning(diet: _diets[index]);
+                                          },
                                         ),
                                       );
                                       },
@@ -91,7 +145,9 @@ class _DietsState extends State<Diets> {
                           ],
                         ),
                       ),
-                    )),
+                    )
+                ),
+                )
               ),
             )));
   }

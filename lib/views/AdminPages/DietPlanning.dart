@@ -1,20 +1,29 @@
-import 'package:diyet/views/AdminMainPage.dart';
+import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/DietPlanningOperations.dart';
+import 'package:diyet/views/AdminPages/mainPage.dart';
 import 'package:flutter/material.dart';
 
 class DietPlanning extends StatefulWidget {
+  final diet;
+
+  const DietPlanning ({ this.diet }): super();
+
   @override
   _DietPlanning createState() => _DietPlanning();
 }
 
 class _DietPlanning extends State<DietPlanning> {
-  TextEditingController cont = new TextEditingController();
-  TextEditingController cont1 = new TextEditingController();
-  TextEditingController cont2 = new TextEditingController();
-  TextEditingController cont3 = new TextEditingController();
-  TextEditingController cont4 = new TextEditingController();
+
+  var choosenMealList = new Map();
   @override
   Widget build(BuildContext context) {
+    TextEditingController freeToEat = new TextEditingController(text: widget.diet.contains('freeToEats') ? widget.diet['freeToEats'].join(',') : '');
+    TextEditingController name = new TextEditingController(text: widget.diet.contains('mealListCode') ? widget.diet['mealListCode']: '');
+    TextEditingController dontEat = new TextEditingController(text: widget.diet.contains('dontEats') ? widget.diet['dontEats'].join(','): '');
+    TextEditingController weekImageUrl = new TextEditingController(text: widget.diet.contains('weekImageUrl') ? widget.diet['weekImageUrl']: '');
+    TextEditingController weekName = new TextEditingController(text: widget.diet.contains('weekText') ? widget.diet['weekText']: '');
+    TextEditingController weekUrl = new TextEditingController(text: widget.diet.contains('weekUrl') ? widget.diet['weekUrl']: '');
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -45,11 +54,11 @@ class _DietPlanning extends State<DietPlanning> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextFormField(
-                    controller: cont,
+                    controller: name,
                     cursorColor: Theme.of(context).cursorColor,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Free To Eat',
+                      labelText: 'Diyet İsmi',
                     ),
                   ),
                 ),
@@ -57,11 +66,11 @@ class _DietPlanning extends State<DietPlanning> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextFormField(
-                    controller: cont1,
+                    controller: freeToEat,
                     cursorColor: Theme.of(context).cursorColor,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Dont Eat',
+                      labelText: 'Serbest Olan Yiyecekler',
                     ),
                   ),
                 ),
@@ -69,7 +78,19 @@ class _DietPlanning extends State<DietPlanning> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextFormField(
-                    controller: cont2,
+                    controller: dontEat,
+                    cursorColor: Theme.of(context).cursorColor,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Yasak Olan Yiyecekler',
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 50,
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: TextFormField(
+                    controller: weekImageUrl,
                     cursorColor: Theme.of(context).cursorColor,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -81,7 +102,7 @@ class _DietPlanning extends State<DietPlanning> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextFormField(
-                    controller: cont3,
+                    controller: weekName,
                     cursorColor: Theme.of(context).cursorColor,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -93,7 +114,7 @@ class _DietPlanning extends State<DietPlanning> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
                   child: TextFormField(
-                    controller: cont4,
+                    controller: weekUrl,
                     cursorColor: Theme.of(context).cursorColor,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -109,7 +130,8 @@ class _DietPlanning extends State<DietPlanning> {
                       style: ElevatedButton.styleFrom(
                         primary: Colors.green,
                       ),
-                      onPressed: () => Navigator.push(
+                      onPressed: () async => {
+                        choosenMealList = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
@@ -117,34 +139,50 @@ class _DietPlanning extends State<DietPlanning> {
                           },
                         ),
                       ),
+                      },
                       child: Text('DİYET PLANLAMA'),
                     )),
                 Container(
                     width: double.infinity,
                     height: 50,
                     margin: EdgeInsets.only(top: 20.0),
-                    child: ElevatedButton(
-                      onPressed: () => {
-                        //TODO addMealList çağıralacak + user'a atama kodunu çağır
-                        print(cont.text +
-                            " " +
-                            cont1.text +
-                            " " +
-                            cont2.text +
-                            " " +
-                            cont3.text +
-                            " " +
-                            cont4.text),
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return AdminManinPage();
-                            },
-                          ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () => {
+                            Navigator.pop(
+                                context
+                            ),
+                          },
+                          child: Text('GERİ'),
                         ),
-                      },
-                      child: Text('BİTİR'),
+                        ElevatedButton(
+                          onPressed: () => {
+                            DatabaseMethods().addMealList({
+                              'dontEats': dontEat.text.split(','),
+                              'freeToEats': freeToEat.text.split(','),
+                              'weekImageUrl': weekImageUrl.text,
+                              'weekUrl': weekUrl.text,
+                              'weekText': weekName.text,
+                              'mealListCode': name.text,
+                              'mealNumbers': {
+                                '1': choosenMealList,
+                                '2': choosenMealList,
+                                '3': choosenMealList,
+                                '4': choosenMealList,
+                                '5': choosenMealList,
+                                '6': choosenMealList,
+                                '7': choosenMealList,
+                              }
+                            }),
+                            Navigator.pop(
+                                context
+                            ),
+                          },
+                          child: Text('KAYDET'),
+                        ),
+                      ],
                     )),
               ],
             ),

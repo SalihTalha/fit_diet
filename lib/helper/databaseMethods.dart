@@ -17,79 +17,35 @@ class DatabaseMethods {
     });
   }
 
-  addMealList(mealListCode, mealListData) async {
-    mealListCode = "3";
-    var sample_meal_list_data = {
-      "dontEats": ["Herşey serbest"],
-      "freeToEats": ["Herşey serbest"],
-      "mealListCode": mealListCode,
-      "weekImageUrl":
-          "https://i.nefisyemektarifleri.com/2016/10/12/gobek-eriten-ve-kabizlik-gideren-yogurt-kuru-bilgi-ve-resimli.jpg",
-      "weekText": "Yoğurtlu Kür",
-      "weekUrl":
-          "https://www.nefisyemektarifleri.com/gobek-eriten-ve-kabizlik-gideren-yogurt-kuru-bilgi-ve-resimli/",
-      "mealNumbers": {
-        "1": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "2": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "3": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "4": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "5": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "6": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        },
-        "7": {
-          "1. Ara": ["11:00", "13", "13", "13", "13", "13"],
-          "Kahvaltı": ["11:00", "13", "13", "13", "13", "13"],
-          "Öğlen Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Akşam Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-          "Gece Yemeği": ["11:00", "13", "13", "13", "13", "13"],
-        }
-      }
-    };
+  changeDiet(userCode, mealCode) async {
+    final snapShot = await FirebaseFirestore.instance.collection('users').where('chatCode', isEqualTo: userCode)
+        .get();
+    var data = snapShot.docs.map((doc) => doc.data()).toList();
+    if (data.isNotEmpty){
+      data[0]['mealListCode'] = mealCode;
+    }
+    print(data);
+    await addUser(data[0], userCode);
+  }
+
+  Future<void> addUser(userData, userCode) async {
+    return await FirebaseFirestore.instance
+        .collection("users")
+        .doc(userCode)
+        .set(userData);
+  }
+
+  addMealList(mealListData) async {
     final snapShot = await FirebaseFirestore.instance
         .collection("mealLists")
-        .doc(mealListCode)
+        .doc(mealListData['mealListCode'])
         .get();
 
     if (snapShot == null || !snapShot.exists) {
       await FirebaseFirestore.instance
           .collection("mealLists")
-          .doc(mealListCode)
-          .set(sample_meal_list_data);
+          .doc(mealListData['mealListCode'])
+          .set(mealListData);
     } else {
       return false;
     }

@@ -8,20 +8,12 @@ class DietPlanningOperations extends StatefulWidget {
 }
 
 class _DietPlanningOperationsState extends State<DietPlanningOperations> {
-  var choosenMealList = new Map();
+  var choosenMealList = [];
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-          appBar: AppBar(
-            title: Text("Öğün seç"),
-            actions: [
-              IconButton(icon: Icon(Icons.done), onPressed: (){
-                Navigator.pop(context, choosenMealList);
-              })
-            ],
-          ),
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Stack(
@@ -41,7 +33,7 @@ class _DietPlanningOperationsState extends State<DietPlanningOperations> {
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemCount: 3,
+                      itemCount: 7,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.only(
@@ -60,10 +52,14 @@ class _DietPlanningOperationsState extends State<DietPlanningOperations> {
                                   child: ListTile(
                                     title: Center(
                                       child: Text(
-                                        numbersToTimes([
+                                        numbersToDays([
                                           "1",
                                           "2",
-                                          "3"
+                                          "3",
+                                          "4",
+                                          "5",
+                                          "6",
+                                          "7"
                                         ][index]),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
@@ -74,20 +70,17 @@ class _DietPlanningOperationsState extends State<DietPlanningOperations> {
                                     ),
                                     onTap: () async {
                                       var tempChoosenMeals = await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return MealListPage(ogun: numbersToTimes([
-                                            "1",
-                                            "2",
-                                            "3"
-                                          ][index]), saat: ["09:00", "14:00", "18:00"][index]);
-                                        },
-                                      ),
-                                    );
-                                    if(tempChoosenMeals != [] && tempChoosenMeals != null){
-                                      choosenMealList.addAll(tempChoosenMeals);
-                                    }
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return MealListPage();
+                                          },
+                                        ),
+                                      );
+                                      if(tempChoosenMeals != []){
+                                        choosenMealList.add(tempChoosenMeals);
+                                      }
+                                      print(choosenMealList);
                                     },
                                   ),
                                 ),
@@ -105,14 +98,22 @@ class _DietPlanningOperationsState extends State<DietPlanningOperations> {
         ));
   }
 
-  numbersToTimes(number) {
+  numbersToDays(number) {
     switch (number) {
       case "1":
-        return "Kahvaltı";
+        return "Pazartesi";
       case "2":
-        return "Öğle Yemeği";
+        return "Salı";
       case "3":
-        return "Akşam Yemeği";
+        return "Çarşamba";
+      case "4":
+        return "Perşembe";
+      case "5":
+        return "Cuma";
+      case "6":
+        return "Cumartesi";
+      case "7":
+        return "Pazar";
       default:
         return number;
     }

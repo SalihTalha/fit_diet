@@ -263,7 +263,6 @@ class _CreateCustomer extends State<CreateCustomer> {
                             if(tempSelected != null){
                               selectedDietPlan = tempSelected;
                             }
-                            print(selectedDietPlan);
                             },
                           child: Text('DİYET PLANLAMA'),
                         )),
@@ -274,11 +273,26 @@ class _CreateCustomer extends State<CreateCustomer> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
-                              widget.user["chatCode"] = chatCodeController.text;
-                              widget.user["weight"] = weightController.text;
-                              widget.user["height"] = heightController.text;
-                              widget.user["weightGoal"] = weightGoalController.text;
-                              widget.user["age"] = ageController.text;
+                              // widget.user["chatCode"] = chatCodeController.text;
+                              // widget.user["weight"] = weightController.text;
+                              // widget.user["height"] = heightController.text;
+                              // widget.user["weightGoal"] = weightGoalController.text;
+                              // widget.user["age"] = ageController.text;
+                              DatabaseMethods db = new DatabaseMethods();
+                              db.addUser({
+                                'age': ageController.text,
+                                'weightGoal': weightGoalController.text,
+                                'height': heightController.text,
+                                'weight': weightController.text,
+                                'chatCode': chatCodeController.text,
+                                'mealListCode': selectedDietPlan.isEmpty ? '1' : selectedDietPlan,
+                                'photoLink': myController.text,
+                                'name': nameController.text,
+                                'weightArray': [{'day': DateTime.now(), 'weight': weightController.text}]
+                              }, chatCodeController.text);
+                            }
+                            else{
+                              print("Hata!");
                             }
                           },
                           child: Text('EKLE'),
