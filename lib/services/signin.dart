@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/services/auth.dart';
 import 'package:diyet/views/chatCodePage.dart';
 import './signup.dart';
@@ -60,23 +61,10 @@ class _signInState extends State<signIn> {
             appBar: mainAppBar("Diyet"),
             body: SingleChildScrollView(
               child: Container(
-                color: Colors.grey[800],
+                color: primaryColorDark,
                 height: MediaQuery.of(context).size.height - 50,
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  // decoration: BoxDecoration(
-                  //   gradient: LinearGradient(
-                  //     begin: Alignment.topRight,
-                  //     end: Alignment.bottomLeft,
-                  //     stops: [0.1, 0.5, 0.7, 0.9],
-                  //     colors: [
-                  //     Colors.blue[400],
-                  //     Colors.blue[500],
-                  //     Colors.blue[700],
-                  //     Colors.blue[800],
-                  //     ],
-                  //   ),
-                  // ),
                   padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0.0),
                   child: Column(
                     children: [
@@ -121,7 +109,7 @@ class _signInState extends State<signIn> {
                           padding: EdgeInsets.symmetric(vertical: 20),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [Colors.green[600], Colors.green[800]]),
+                                colors: [primaryColor, primaryColor]),
                             borderRadius: BorderRadius.circular(40),
                           ),
                           child: Text(

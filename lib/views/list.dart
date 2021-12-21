@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/programDaySelectedView.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +57,7 @@ class _listPageState extends State<listPage> {
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
                             fontSize: 26,
-                            color: const Color(0xFF20008B),
+                            color: secondaryColorDark,
                           ),
                         ),
                         GestureDetector(

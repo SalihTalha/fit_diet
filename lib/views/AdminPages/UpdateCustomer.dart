@@ -25,16 +25,23 @@ class _UpdateCustomer extends State<UpdateCustomer> {
   bool _isHide = true;
   final _formKey = GlobalKey<FormState>();
   var imageUrl = null;
+  var userFirstCode = null;
+  var selectedDietPlan = null;
 
   @override
   void initState() {
     setState(() {
+      selectedDietPlan = widget.user["mealListCode"];
+      userFirstCode = widget.user["chatCode"];
       myController = TextEditingController(text: widget.user["photoLink"]);
       chatCodeController = TextEditingController(text: widget.user["chatCode"]);
       ageController = TextEditingController(text: widget.user["age"]);
-      heightController = TextEditingController(text: widget.user["height"].toString());
-      weightController = TextEditingController(text: widget.user["weight"].toString());
-      weightGoalController = TextEditingController(text: widget.user["weightGoal"].toString());
+      heightController =
+          TextEditingController(text: widget.user["height"].toString());
+      weightController =
+          TextEditingController(text: widget.user["weight"].toString());
+      weightGoalController =
+          TextEditingController(text: widget.user["weightGoal"].toString());
     });
     super.initState();
   }
@@ -102,8 +109,7 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                                           onPressed: () {
                                             Navigator.pop(context);
                                             setState(() {
-                                              imageUrl =
-                                                  myController.text;
+                                              imageUrl = myController.text;
                                             });
                                           },
                                           child: Text('KAYDET'),
@@ -113,7 +119,8 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                           },
                           padding: EdgeInsets.all(0.0),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(widget.user["photoLink"]),
+                            backgroundImage:
+                                NetworkImage(widget.user["photoLink"]),
                             backgroundColor: Colors.transparent,
                             radius: 50,
                           ),
@@ -148,9 +155,6 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Lütfen giriş kodu giriniz.';
-                          }
-                          if (value.length >= 10 || value.length <= 4) {
-                            return "Lütfen 4 - 10 haneli giriş kodu giriniz.";
                           }
                           return null;
                         },
@@ -256,14 +260,21 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                         height: 50,
                         margin: EdgeInsets.only(top: 20.0),
                         child: ElevatedButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return Diets(toChoose: true,);
-                              },
-                            ),
-                          ),
+                          onPressed: () async {
+                            var tempSelected = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Diets(
+                                    toChoose: true,
+                                  );
+                                },
+                              ),
+                            );
+                            if (tempSelected != null) {
+                              selectedDietPlan = tempSelected;
+                            }
+                          },
                           child: Text('DİYET PLANLAMA'),
                         )),
                     Container(
@@ -273,11 +284,28 @@ class _UpdateCustomer extends State<UpdateCustomer> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState.validate()) {
-                              widget.user["chatCode"] = chatCodeController.text;
-                              widget.user["weight"] = weightController.text;
-                              widget.user["height"] = heightController.text;
-                              widget.user["weightGoal"] = weightGoalController.text;
-                              widget.user["age"] = ageController.text;
+                              DatabaseMethods db = new DatabaseMethods();
+                              db.updateUser({
+                                'age': ageController.text,
+                                'weightGoal':
+                                    int.parse(weightGoalController.text),
+                                'height': int.parse(heightController.text),
+                                'weight': int.parse(weightController.text),
+                                'chatCode': chatCodeController.text,
+                                'mealListCode': selectedDietPlan == null
+                                    ? '1'
+                                    : selectedDietPlan,
+                                'photoLink': myController.text,
+                                'name': widget.user["name"],
+                                'weightArray': [
+                                  {
+                                    'day': DateTime.now(),
+                                    'weight': weightController.text
+                                  }
+                                ]
+                              }, userFirstCode);
+                            } else {
+                              print("Hata!");
                             }
                           },
                           child: Text('GÜNCELLE'),

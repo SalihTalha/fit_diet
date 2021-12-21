@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/AdminPages/mealslistPage.dart';
 import 'package:flutter/material.dart';
 import 'package:diyet/views/programDaySelectedView.dart';
@@ -48,7 +49,7 @@ class _DietPlanningOperationsState extends State<DietPlanningOperations> {
                               color: Colors.transparent,
                               child: Card(
                                 child: Container(
-                                  color: const Color(0xFF200087),
+                                  color: secondaryColorDark,
                                   child: ListTile(
                                     title: Center(
                                       child: Text(

@@ -35,6 +35,11 @@ class DatabaseMethods {
         .set(userData);
   }
 
+  Future<void> updateUser(userData, userCode) async {
+    await FirebaseFirestore.instance.collection("users").doc("userCode").delete();
+    await addUser(userData, userData["chatCode"]);
+  }
+
   addMealList(mealListData) async {
     final snapShot = await FirebaseFirestore.instance
         .collection("mealLists")

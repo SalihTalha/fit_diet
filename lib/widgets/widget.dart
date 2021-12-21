@@ -1,10 +1,11 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:flutter/material.dart';
 
 InputDecoration textField(String hintText){
   return InputDecoration(
     hintText: hintText,
     hintStyle: TextStyle(
-      color: Colors.blueGrey,
+      color: secondaryColorDark,
     ),
     focusedBorder: UnderlineInputBorder(
       borderSide: BorderSide(color: Colors.white),

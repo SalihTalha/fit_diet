@@ -36,6 +36,6 @@ class _HomeSState extends State<HomeS> {
 
   @override
   Widget build(BuildContext context) {
-    return MainPage();
+    return ChatCodePage();
   }
 }

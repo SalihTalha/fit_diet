@@ -41,12 +41,6 @@ class _tabPagesState extends State<tabPages> {
   @override
   void initState(){
 
-
-    //print(userMap);
-    //print(listOfMealsInMealList);
-    //print(mealListMap);
-    //print(listOfMealsInMealList);
-
     List<Meal> listOfMeals = [];
 
     List<dynamic> bigList = []; // Gün[ öğün adı [ öğün yemek kodları ] ] diğer öğün [..] , .. ] , diğer gün
@@ -78,29 +72,6 @@ class _tabPagesState extends State<tabPages> {
 
     var dayIndex = int.parse(DateTime.now().weekday.toString()) - 1;
 
-    //print(bigList);
-    //print(allHours);
-    //print(allHours[0]);
-    //print(allHours[0][1]);
-    //print(allHours[dayIndex][0]);
-
-
-    //  var mealListMapToday = mealListMap['mealNumbers'][DateTime.now().weekday.toString()];
-    //  mealListMapToday.forEach((key, value) {
-    //    hours.add(value[0]);
-    //    for(var i = 1; i < value.length; i++){
-    //      tempList.add(int.parse(value[i]));
-    //      tempMealCount += 1;
-    //    }
-    //    list.add(key);
-    //    list.add(new List()..addAll(tempList));
-    //    mealCounts.add(tempMealCount);
-    //    tempMealCount = 0;
-    //    tempList.clear();
-    //  });
-    // print(list);
-    // print(hours);
-    // print(mealCounts);
 
     List minutes = []; // Her öğünün başlangıç saatinin dakika cinsinden değeri
 
@@ -126,9 +97,6 @@ class _tabPagesState extends State<tabPages> {
       }
     }
 
-    //print(timeIndex);
-
-
     List<Meal> mealListForNow;
     Map <dynamic, dynamic> mealMap = new Map();
 
@@ -138,16 +106,8 @@ class _tabPagesState extends State<tabPages> {
       mealMap.putIfAbsent(bigList[dayIndex*2+1][timeIndex*2+1][i].toString(), () => listOfMealsInMealList.where((e) => (e['mealCode'] == bigList[dayIndex*2+1][timeIndex*2+1][i].toString())).toList()[0]);
     }
     // mealMap -> {mealCode: mealData}
-    //print(mealMap);
 
     for(var i = 0; i < bigList[dayIndex*2+1][timeIndex*2+1].length; i++){
-      //print(mealMap);
-      //print(allHours);
-      //print(bigList[dayIndex*2+1]);
-      //print(bigList[dayIndex*2+1][timeIndex*2+1]);
-      //print(bigList[dayIndex*2+1][timeIndex*2+1][i]);
-      //print(mealMap[bigList[dayIndex*2+1][timeIndex*2+1][i].toString()]['meal']);
-      //print(allHours[dayIndex][timeIndex]);
 
       listOfMeals.add( // Öğünde bulunan meal'ların listesi
           Meal(

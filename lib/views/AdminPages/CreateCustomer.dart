@@ -30,7 +30,9 @@ class _CreateCustomer extends State<CreateCustomer> {
   @override
   void initState() {
     setState(() {
-      myController = TextEditingController(text: 'https://icons-for-free.com/iconfiles/png/512/person-1324760545186718018.png');
+      myController = TextEditingController(
+          text:
+              'https://icons-for-free.com/iconfiles/png/512/person-1324760545186718018.png');
       nameController = TextEditingController();
       chatCodeController = TextEditingController();
       ageController = TextEditingController();
@@ -60,7 +62,6 @@ class _CreateCustomer extends State<CreateCustomer> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -83,36 +84,35 @@ class _CreateCustomer extends State<CreateCustomer> {
                             showDialog(
                                 context: context,
                                 builder: (_) => AlertDialog(
-                                  title: Text('Resim Url Giriniz'),
-                                  content: TextFormField(
-                                    controller: myController,
-                                    cursorColor:
-                                    Theme.of(context).cursorColor,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                  actions: [
-                                    FlatButton(
-                                      textColor: Color(0xFF6200EE),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('KAPAT'),
-                                    ),
-                                    FlatButton(
-                                      textColor: Color(0xFF6200EE),
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        setState(() {
-                                          imageUrl =
-                                              myController.text;
-                                        });
-                                      },
-                                      child: Text('KAYDET'),
-                                    ),
-                                  ],
-                                ));
+                                      title: Text('Resim Url Giriniz'),
+                                      content: TextFormField(
+                                        controller: myController,
+                                        cursorColor:
+                                            Theme.of(context).cursorColor,
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      actions: [
+                                        FlatButton(
+                                          textColor: primaryColor,
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text('KAPAT'),
+                                        ),
+                                        FlatButton(
+                                          textColor: primaryColorDark,
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            setState(() {
+                                              imageUrl = myController.text;
+                                            });
+                                          },
+                                          child: Text('KAYDET'),
+                                        ),
+                                      ],
+                                    ));
                           },
                           padding: EdgeInsets.all(0.0),
                           child: CircleAvatar(
@@ -123,7 +123,9 @@ class _CreateCustomer extends State<CreateCustomer> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16,),
+                    SizedBox(
+                      height: 16,
+                    ),
                     TextFormField(
                       controller: nameController,
                       cursorColor: Theme.of(context).cursorColor,
@@ -256,14 +258,16 @@ class _CreateCustomer extends State<CreateCustomer> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return Diets(toChoose: true,);
+                                  return Diets(
+                                    toChoose: true,
+                                  );
                                 },
                               ),
                             );
-                            if(tempSelected != null){
+                            if (tempSelected != null) {
                               selectedDietPlan = tempSelected;
                             }
-                            },
+                          },
                           child: Text('DİYET PLANLAMA'),
                         )),
                     Container(
@@ -281,17 +285,24 @@ class _CreateCustomer extends State<CreateCustomer> {
                               DatabaseMethods db = new DatabaseMethods();
                               db.addUser({
                                 'age': ageController.text,
-                                'weightGoal': weightGoalController.text,
-                                'height': heightController.text,
-                                'weight': weightController.text,
+                                'weightGoal':
+                                    int.parse(weightGoalController.text),
+                                'height': int.parse(heightController.text),
+                                'weight': int.parse(weightController.text),
                                 'chatCode': chatCodeController.text,
-                                'mealListCode': selectedDietPlan.isEmpty ? '1' : selectedDietPlan,
+                                'mealListCode': selectedDietPlan.isEmpty
+                                    ? '1'
+                                    : selectedDietPlan,
                                 'photoLink': myController.text,
                                 'name': nameController.text,
-                                'weightArray': [{'day': DateTime.now(), 'weight': weightController.text}]
+                                'weightArray': [
+                                  {
+                                    'day': DateTime.now(),
+                                    'weight': weightController.text
+                                  }
+                                ]
                               }, chatCodeController.text);
-                            }
-                            else{
+                            } else {
                               print("Hata!");
                             }
                           },

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -114,8 +115,8 @@ class _chatPageState extends State<chatPage> {
                           width: 40,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
-                              const Color(0x36FFFFFF),
-                              const Color(0x0FFFFFFF),
+                              primaryColor,
+                              primaryColorDark,
                             ]),
                             borderRadius: BorderRadius.circular(100),
                           ),
@@ -195,8 +196,8 @@ class MessageTile extends StatelessWidget {
                   bottomRight: Radius.circular(23)),
           gradient: LinearGradient(
             colors: sendByMe
-                ? [const Color(0xFF5B4D9D), const Color(0xFF5B4D95)]
-                : [const Color(0xff2A75BC), const Color(0xff007EF4)],
+                ? [primaryColor, primaryColorLight]
+                : [secondaryColorDark, secondaryColorLight],
           ),
         ),
         child: Text(message,

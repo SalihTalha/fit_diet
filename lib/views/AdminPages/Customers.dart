@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
 import 'package:diyet/views/AdminPages/UpdateCustomer.dart';
@@ -63,7 +64,7 @@ class _CustomersState extends State<Customers> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           IconButton(
-                            color: Colors.grey[700],
+                            color: primaryColorLight,
                             icon: Icon(Icons.message),
                             onPressed: (){Navigator.push(
                               context,
@@ -76,7 +77,7 @@ class _CustomersState extends State<Customers> {
                             },
                           ),
                           IconButton(
-                            color: Colors.grey[700],
+                            color: primaryColorDark,
                             icon: Icon(Icons.settings),
                             onPressed: (){Navigator.push(
                               context,

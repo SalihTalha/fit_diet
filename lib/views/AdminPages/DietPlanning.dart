@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/DietPlanningOperations.dart';
 import 'package:diyet/views/AdminPages/mainPage.dart';
@@ -17,12 +18,12 @@ class _DietPlanning extends State<DietPlanning> {
   var choosenMealList = new Map();
   @override
   Widget build(BuildContext context) {
-    TextEditingController freeToEat = new TextEditingController(text: widget.diet.contains('freeToEats') ? widget.diet['freeToEats'].join(',') : '');
-    TextEditingController name = new TextEditingController(text: widget.diet.contains('mealListCode') ? widget.diet['mealListCode']: '');
-    TextEditingController dontEat = new TextEditingController(text: widget.diet.contains('dontEats') ? widget.diet['dontEats'].join(','): '');
-    TextEditingController weekImageUrl = new TextEditingController(text: widget.diet.contains('weekImageUrl') ? widget.diet['weekImageUrl']: '');
-    TextEditingController weekName = new TextEditingController(text: widget.diet.contains('weekText') ? widget.diet['weekText']: '');
-    TextEditingController weekUrl = new TextEditingController(text: widget.diet.contains('weekUrl') ? widget.diet['weekUrl']: '');
+    TextEditingController freeToEat = new TextEditingController(text: widget.diet["freeToEats"] != null ? widget.diet["freeToEats"].join(',') : "");
+    TextEditingController name = new TextEditingController(text: widget.diet['mealListCode'] != null ? widget.diet['mealListCode']: '');
+    TextEditingController dontEat = new TextEditingController(text: widget.diet['dontEats'] != null ? widget.diet['dontEats'].join(','): '');
+    TextEditingController weekImageUrl = new TextEditingController(text: widget.diet['weekImageUrl'] != null ? widget.diet['weekImageUrl']: '');
+    TextEditingController weekName = new TextEditingController(text: widget.diet['weekText'] != null ? widget.diet['weekText']: '');
+    TextEditingController weekUrl = new TextEditingController(text: widget.diet['weekUrl'] != null ? widget.diet['weekUrl']: '');
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -37,31 +38,6 @@ class _DietPlanning extends State<DietPlanning> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Stack(
-                  children: [
-                    FlatButton(
-                      onPressed: null,
-                      padding: EdgeInsets.all(0.0),
-                      child: const CircleAvatar(
-                        child: Icon(Icons.account_circle_outlined, size: 100),
-                        radius: 50,
-                      ),
-                    ),
-                  ],
-                ),
-                Text("İsim Soyisim"),
-                Container(
-                  height: 50,
-                  margin: EdgeInsets.only(top: 20.0),
-                  child: TextFormField(
-                    controller: name,
-                    cursorColor: Theme.of(context).cursorColor,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Diyet İsmi',
-                    ),
-                  ),
-                ),
                 Container(
                   height: 50,
                   margin: EdgeInsets.only(top: 20.0),
@@ -128,7 +104,7 @@ class _DietPlanning extends State<DietPlanning> {
                     margin: EdgeInsets.only(top: 20.0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.green,
+                        primary: primaryColor,
                       ),
                       onPressed: () async => {
                         choosenMealList = await Navigator.push(

@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/services/meal.dart';
 import 'package:diyet/views/meal_detail_screen.dart';
 import 'package:diyet/views/profileDetailScreen.dart';
@@ -35,79 +36,70 @@ class ProfileScreen extends StatelessWidget {
             height: height * 0.35,
             left: 0,
             right: 0,
-            child: OpenContainer(
-              closedBuilder: (context, VoidCallback openContainer) {
-                return GestureDetector(
-                  onTap: openContainer,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      bottomRight: const Radius.circular(20),
-                    ),
-                    child: Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.only(
-                          top: 5, left: 32, right: 16, bottom: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [ // TODO , randevu takip, diyetisyen durumu ve mesaj saatleri
-                          ListTile(
-                            title: Text(day(DateTime.now().weekday),
-                                style: TextStyle(
-                                  color: Colors.black38,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 12,
-                                )),
-                            subtitle: FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Text(
-                                "Merhaba, " + userMap['name'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            trailing: CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.transparent,
-                              backgroundImage: NetworkImage(
-                                userMap['photoLink'],
-                              ),
-                            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomRight: const Radius.circular(20),
+              ),
+              child: Container(
+                color: Colors.white,
+                padding:
+                    EdgeInsets.only(top: 5, left: 32, right: 16, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // TODO , randevu takip, diyetisyen durumu ve mesaj saatleri
+                    ListTile(
+                      title: Text(day(DateTime.now().weekday),
+                          style: TextStyle(
+                            color: Colors.black38,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          )),
+                      subtitle: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          "Merhaba, " + userMap['name'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Colors.black,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              RadialProgress(
-                                  height * 0.18,
-                                  height * 0.18,
-                                  findProgress(userMap['weightArray'],
-                                      userMap['weightGoal']),
-                                  findKg(userMap['weightArray'])),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              RadialProgress(
-                                height * 0.18,
-                                height * 0.18,
-                                0.33,
-                                "200/600",
-                                color: Colors.lightBlueAccent,
-                                textColor: Colors.deepPurple,
-                                text2: "Yürüyüş",
-                              )
-                            ],
-                          ),
-                        ],
+                        ),
+                      ),
+                      trailing: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: NetworkImage(
+                          userMap['photoLink'],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-              openBuilder: (context, _) {
-                return ProfileDetailScreen(userMap);
-              },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        RadialProgress(
+                            height * 0.18,
+                            height * 0.18,
+                            findProgress(
+                                userMap['weightArray'], userMap['weightGoal']),
+                            findKg(userMap['weightArray'])),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        RadialProgress(
+                          height * 0.18,
+                          height * 0.18,
+                          0.33,
+                          "200/600",
+                          color: secondaryColorLight,
+                          textColor: secondaryColorDark,
+                          text2: "Yürüyüş",
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -168,8 +160,8 @@ class ProfileScreen extends StatelessWidget {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              const Color(0xFF20008B),
-                              const Color(0xFF200087),
+                              secondaryColorDark,
+                              secondaryColorDark,
                             ]),
                       ),
                       child: Row(
@@ -309,21 +301,21 @@ class ProfileScreen extends StatelessWidget {
   }
 
   String day(int weekday) {
-    switch(weekday){
+    switch (weekday) {
       case 1:
-        return DateTime.now().month.toString() +  'Pazartesi';
+        return DateTime.now().month.toString() + 'Pazartesi';
       case 2:
-        return DateTime.now().month.toString() +'Salı';
+        return DateTime.now().month.toString() + 'Salı';
       case 3:
-        return DateTime.now().month.toString() +'Çarşamba';
+        return DateTime.now().month.toString() + 'Çarşamba';
       case 4:
-        return DateTime.now().month.toString() +'Perşembe';
+        return DateTime.now().month.toString() + 'Perşembe';
       case 5:
-        return DateTime.now().month.toString() +'Cuma';
+        return DateTime.now().month.toString() + 'Cuma';
       case 6:
-        return DateTime.now().month.toString() +'Cumartesi';
+        return DateTime.now().month.toString() + 'Cumartesi';
       case 7:
-        return DateTime.now().month.toString() +'Pazar';
+        return DateTime.now().month.toString() + 'Pazar';
     }
   }
 }

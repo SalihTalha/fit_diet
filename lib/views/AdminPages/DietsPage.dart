@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/views/AdminPages/DietPlanning.dart';
 import 'package:diyet/views/AdminPages/chatAdmin.dart';
@@ -45,7 +46,7 @@ class _DietsState extends State<Diets> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(
-                      color: Colors.grey[700],
+                      color: primaryColorLight,
                       icon: Icon(Icons.add_outlined),
                       onPressed: (){
                         Navigator.push(
@@ -56,20 +57,6 @@ class _DietsState extends State<Diets> {
                             },
                           ),
                         );
-                      },
-                    ),
-
-                    IconButton(
-                      color: Colors.grey[700],
-                      icon: Icon(Icons.settings),
-                      onPressed: (){Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return DietPlanning(diet: {});
-                          },
-                        ),
-                      );
                       },
                     ),
                   ],
@@ -105,6 +92,9 @@ class _DietsState extends State<Diets> {
                                 child: Image.network(
                                   _diets[index]["weekImageUrl"],
                                   fit: BoxFit.cover,
+                                  errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+                                    return Text('Image Not Given');
+                                  },
                                 ),
                               ),
                             ),
@@ -120,19 +110,20 @@ class _DietsState extends State<Diets> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     widget.toChoose ? IconButton(
-                                      color: Colors.grey[700],
+                                      color: secondaryColorDark,
                                       icon: Icon(Icons.add_outlined),
                                       onPressed: (){
                                         Navigator.pop(context, _diets[index]["mealListCode"]);
                                       },
                                     ) : Text((index+1).toString()),
                                     IconButton(
-                                      color: Colors.grey[700],
+                                      color: secondaryColorDark,
                                       icon: Icon(Icons.settings),
                                       onPressed: (){Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {
+                                            print(_diets[index]);
                                             return DietPlanning(diet: _diets[index]);
                                           },
                                         ),
