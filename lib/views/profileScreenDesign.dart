@@ -229,7 +229,7 @@ class ProfileScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(5)),
-                                          color: Color(0xFF5B4D9D),
+                                          color: primaryColorLight,
                                         ),
                                       ),
                                     );
@@ -256,7 +256,7 @@ class ProfileScreen extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(5)),
-                                          color: Color(0xFF5B4D9D),
+                                          color: primaryColorLight,
                                         ),
                                       ),
                                     );
@@ -378,8 +378,8 @@ class RadialProgress extends StatelessWidget {
   final Color textColor;
 
   RadialProgress(this.height, this.width, this.progress, this.text,
-      {this.color: const Color(0xFF200087),
-      this.textColor: const Color(0xFF200087),
+      {this.color: primaryColorDark,
+      this.textColor: primaryColorDark,
       this.text2: "kg"});
 
   @override
@@ -483,7 +483,7 @@ class MealCard extends StatelessWidget {
                         style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
-                            color: Colors.blueGrey),
+                            color: secondaryColorLight),
                       ),
                       Text(
                         meal.mealName,

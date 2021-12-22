@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/profileScreenDesign.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> { // TODO Tas
                 title: Text("30/100"),
                 trailing: BarProgress(
                   name: "Karbonhidrat",
-                  color: Colors.greenAccent,
+                  color: primaryColorLight,
                   progress: 0.3,
                   width: 500,
                 ),

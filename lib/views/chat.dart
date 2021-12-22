@@ -92,7 +92,7 @@ class _chatPageState extends State<chatPage> {
               Container(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  color: Color(0x54FFFFFF),
+                  color: primaryColorDark,
                   padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: Row(
                     children: [

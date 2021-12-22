@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/tabPage.dart';
 import 'package:flutter/material.dart';
 import 'package:diyet/views/AdminPages/mainPage.dart';
@@ -151,7 +152,7 @@ class _ChatCodePageState extends State<ChatCodePage> {
                     child: Container(
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: <Color>[Colors.lightBlue, Colors.blue],
+                          colors: <Color>[secondaryColorLight, secondaryColor],
                         ),
                       ),
                       padding: const EdgeInsets.all(10.0),

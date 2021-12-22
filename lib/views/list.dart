@@ -74,7 +74,7 @@ class _listPageState extends State<listPage> {
                               const Radius.circular(20),
                             ),
                             child: Container(
-                              color: const Color(0xFFA5A5FF),
+                              color: secondaryColorDark,
                               child: Column(
                                 children: [
                                   Padding(
@@ -88,7 +88,7 @@ class _listPageState extends State<listPage> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20,
-                                        color: const Color(0xFF010179),
+                                        color: secondaryColorDark,
                                       ),
                                     ),
                                   ),
@@ -145,7 +145,7 @@ class _listPageState extends State<listPage> {
                               color: Colors.transparent,
                               child: Card(
                                 child: Container(
-                                  color: const Color(0xFF200087),
+                                  color: secondaryColorDark,
                                   child: ListTile(
                                     title: Center(
                                       child: Text(

@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/views/programMealSelectedView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -80,7 +81,7 @@ onTappedView(List<Map<String, dynamic>> listOfMealsInMealList,
             color: Colors.transparent,
             child: Card(
               child: Container(
-                color: const Color(0xFF200087),
+                color: secondaryColorDark,
                 child: ListTile(
                   title: Center(
                       child: ListTile(

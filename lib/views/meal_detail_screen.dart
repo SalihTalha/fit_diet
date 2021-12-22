@@ -1,3 +1,4 @@
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/services/meal.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +10,11 @@ class MealDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF223344),
+      backgroundColor: secondaryColorDark,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: const Color(0xFF203040),
+            backgroundColor: secondaryColorDark,
             expandedHeight: 300,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
@@ -90,7 +91,7 @@ class MealDetailScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 16,
-                      color: Colors.lightBlue,
+                      color: secondaryColorLight,
                     ),
                   ),
                 ),
@@ -121,7 +122,7 @@ class MealDetailScreen extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 26,
-                    color: Colors.lightGreen,
+                    color: primaryColorLight,
                   ),
                 ),
               ),

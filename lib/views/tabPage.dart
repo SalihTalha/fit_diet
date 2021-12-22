@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:diyet/helper/Helper.dart';
 import 'package:diyet/helper/databaseMethods.dart';
 import 'package:diyet/services/meal.dart';
 import 'package:flutter/material.dart';
@@ -163,7 +164,7 @@ class _tabPagesState extends State<tabPages> {
         height: 50,
         color: Colors.white,
         backgroundColor: const Color(0xFFE9E9E9),
-        buttonBackgroundColor:  const Color(0xFF200087),
+        buttonBackgroundColor:  secondaryColorDark,
         items: [
           Icon(Icons.message),
           Icon(Icons.person),
@@ -179,189 +180,4 @@ class _tabPagesState extends State<tabPages> {
 
     );
   }
-
-
-  /*
-  Widget _buildBottomNavigationBar() {
-    switch (_currentStyle) {
-      case ThemeStyle.Dribbble:
-        return _buildOriginDesign();
-      case ThemeStyle.Light:
-        return _buildLightDesign();
-      case ThemeStyle.AntDesign:
-        return _buildCustomIconDesign();
-      case ThemeStyle.BorderRadius:
-        return _buildBorderRadiusDesign();
-      case ThemeStyle.FloatingBar:
-        return _buildFloatingBar();
-      case ThemeStyle.NoElevation:
-        return _buildNoElevation();
-      default:
-        return _buildOriginDesign();
-    }
-  }
-
-  Widget _buildOriginDesign() {
-    return CustomNavigationBar(
-      scaleFactor: 0.1,
-      iconSize: 30.0,
-      selectedColor: Colors.white,
-      strokeColor: Colors.white,
-      unSelectedColor: Color(0xff6c788a),
-      backgroundColor: Color(0xff040307),
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: changePage
-    );
-  }
-
-  Widget _buildLightDesign() {
-    return CustomNavigationBar(
-      iconSize: 30.0,
-      selectedColor: Color(0xff040307),
-      strokeColor: Color(0x30040307),
-      unSelectedColor: Color(0xffacacac),
-      backgroundColor: Colors.white,
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-    );
-  }
-
-  Widget _buildNoElevation() {
-    return CustomNavigationBar(
-      elevation: 0.0,
-      iconSize: 30.0,
-      selectedColor: Color(0xff625aff),
-      strokeColor: Color(0xff625aff),
-      unSelectedColor: Colors.white,
-      backgroundColor: Color(0xffa9a5f2),
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-    );
-  }
-
-  Widget _buildCustomIconDesign() {
-    return CustomNavigationBar(
-      iconSize: 30.0,
-      selectedColor: Color(0xff0c18fb),
-      strokeColor: Color(0x300c18fb),
-      unSelectedColor: Colors.grey[600],
-      backgroundColor: Colors.white,
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-    );
-  }
-
-  Widget _buildBorderRadiusDesign() {
-    return CustomNavigationBar(
-      iconSize: 30.0,
-      selectedColor: Color(0xff0c18fb),
-      strokeColor: Color(0x300c18fb),
-      unSelectedColor: Colors.grey[600],
-      backgroundColor: Colors.white,
-      borderRadius: Radius.circular(20.0),
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-    );
-  }
-
-  Widget _buildFloatingBar() {
-    return CustomNavigationBar(
-      iconSize: 30.0,
-      selectedColor: Color(0xff0c18fb),
-      strokeColor: Color(0x300c18fb),
-      unSelectedColor: Colors.grey[600],
-      backgroundColor: Colors.white,
-      borderRadius: Radius.circular(20.0),
-      items: [
-        CustomNavigationBarItem(
-          icon: Icons.message,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.account_circle,
-        ),
-        CustomNavigationBarItem(
-          icon: Icons.menu,
-        ),
-      ],
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      isFloating: true,
-    );
-  }
-   */
 }
