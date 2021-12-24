@@ -52,7 +52,10 @@ class DatabaseMethods {
           .doc(mealListData['mealListCode'])
           .set(mealListData);
     } else {
-      return false;
+      await FirebaseFirestore.instance
+          .collection("mealLists")
+          .doc(mealListData['mealListCode'])
+          .set(mealListData);
     }
   }
 

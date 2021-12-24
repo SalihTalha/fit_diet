@@ -7,23 +7,28 @@ import 'package:flutter/material.dart';
 class DietPlanning extends StatefulWidget {
   final diet;
 
-  const DietPlanning ({ this.diet }): super();
+  const DietPlanning({this.diet}) : super();
 
   @override
   _DietPlanning createState() => _DietPlanning();
 }
 
 class _DietPlanning extends State<DietPlanning> {
-
   var choosenMealList = new Map();
   @override
   Widget build(BuildContext context) {
-    TextEditingController freeToEat = new TextEditingController(text: widget.diet["freeToEats"] != null ? widget.diet["freeToEats"].join(',') : "");
-    TextEditingController name = new TextEditingController(text: widget.diet['mealListCode'] != null ? widget.diet['mealListCode']: '');
-    TextEditingController dontEat = new TextEditingController(text: widget.diet['dontEats'] != null ? widget.diet['dontEats'].join(','): '');
-    TextEditingController weekImageUrl = new TextEditingController(text: widget.diet['weekImageUrl'] != null ? widget.diet['weekImageUrl']: '');
-    TextEditingController weekName = new TextEditingController(text: widget.diet['weekText'] != null ? widget.diet['weekText']: '');
-    TextEditingController weekUrl = new TextEditingController(text: widget.diet['weekUrl'] != null ? widget.diet['weekUrl']: '');
+    TextEditingController freeToEat = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet["freeToEats"].join(',') : "");
+    TextEditingController name = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet['mealListCode'] : '');
+    TextEditingController dontEat = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet['dontEats'].join(',') : '');
+    TextEditingController weekImageUrl = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet['weekImageUrl'] : '');
+    TextEditingController weekName = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet['weekText'] : '');
+    TextEditingController weekUrl = new TextEditingController(
+        text: widget.diet != 'new' ? widget.diet['weekUrl'] : '');
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -108,13 +113,13 @@ class _DietPlanning extends State<DietPlanning> {
                       ),
                       onPressed: () async => {
                         choosenMealList = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return DietPlanningOperations();
-                          },
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DietPlanningOperations();
+                            },
+                          ),
                         ),
-                      ),
                       },
                       child: Text('DİYET PLANLAMA'),
                     )),
@@ -127,9 +132,7 @@ class _DietPlanning extends State<DietPlanning> {
                       children: [
                         ElevatedButton(
                           onPressed: () => {
-                            Navigator.pop(
-                                context
-                            ),
+                            Navigator.pop(context),
                           },
                           child: Text('GERİ'),
                         ),
@@ -141,7 +144,7 @@ class _DietPlanning extends State<DietPlanning> {
                               'weekImageUrl': weekImageUrl.text,
                               'weekUrl': weekUrl.text,
                               'weekText': weekName.text,
-                              'mealListCode': name.text,
+                              'mealListCode': UniqueKey().toString(),
                               'mealNumbers': {
                                 '1': choosenMealList,
                                 '2': choosenMealList,
@@ -152,9 +155,7 @@ class _DietPlanning extends State<DietPlanning> {
                                 '7': choosenMealList,
                               }
                             }),
-                            Navigator.pop(
-                                context
-                            ),
+                            Navigator.pop(context),
                           },
                           child: Text('KAYDET'),
                         ),
