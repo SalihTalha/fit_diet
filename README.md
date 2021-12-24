@@ -3,6 +3,9 @@ This is our school project that written with Flutter.
 
 ![image](https://user-images.githubusercontent.com/47334156/142261773-cee6a633-3287-4527-b938-3cc43d30bd4e.png)
 
+# Organization Chart
+
+![organizasyon şeması drawio](https://user-images.githubusercontent.com/86367768/147367100-ff7b505c-96fa-4016-b0b5-72e6991260ed.png)
 
 ## Team:
 * Burak Arslan (Scrum Master)
