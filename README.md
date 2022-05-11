@@ -1,5 +1,5 @@
-# fit_diet
-This is our school project that written with Flutter. 
+# Fit Diet
+An application that helps dieticians plan and track people's diets. This project was written with Flutter and uses Firebase as a database.
 
 ![image](https://user-images.githubusercontent.com/47334156/142261773-cee6a633-3287-4527-b938-3cc43d30bd4e.png)
 
